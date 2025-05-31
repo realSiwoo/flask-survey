@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>이벤트 설문조사</title>
+<style>
+  body { font-family: sans-serif; background: #f1f1f1; text-align: center; }
+  .container { background: #fff; padding: 30px; margin: 50px auto; width: 300px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+  input, textarea { width: 100%; margin: 10px 0; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+  button { background: #4caf50; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>이벤트 설문조사</h2>
+    <p>환영합니다, {{ username }}님!</p>
+    <form action="/submit" method="post">
+      <input type="text" name="name" placeholder="리그오브 레전드 인게임 이름+태그" required><br>
+      <input type="email" name="email" placeholder="이메일" required><br>
+      <textarea name="feedback" placeholder="불멸의 전설 카이사 스킨에 대한 의견을 작성해주세요" required></textarea><br>
+      <button type="submit">제출</button>
+    </form>
+    <a href="/logout">로그아웃</a>
+  </div>
+</body>
+</html>

