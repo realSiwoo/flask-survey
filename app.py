@@ -31,30 +31,40 @@ def survey():
     return render_template('survey.html', username=session['username'])
 
 
-# === 3. 설문 제출 처리 ===
 @app.route('/submit', methods=['POST'])
 def submit():
     if 'username' not in session:
         return redirect(url_for('login'))
-
+    
+    # 기본 정보 수집
     name = request.form.get('name')
     email = request.form.get('email')
+    phone = request.form.get('phone')  # ← 추가!
     feedback = request.form.get('feedback')
-
+    
+    # 설문 질문 수집
     q1 = request.form.get('q1')
     q2 = request.form.get('q2')
     q3 = request.form.get('q3')
-    ad_agree = request.form.get('ad_agree')  # 체크 안 하면 None
+    
+    # 체크 항목 수집
+    agree = request.form.getlist('agree')  # ← 체크박스는 getlist!
+    ad_agree = request.form.get('ad_agree')  # ← 광고 수신 체크박스 (있으면 'on')
 
-    # 서버 콘솔 로그 기록
-    print(f"[설문 제출] 참여자: {name}, 이메일: {email}")
-    print(f" - 개인정보 침해 경험: {q1}")
-    print(f" - 걱정되는 유형: {q2}")
-    print(f" - 실천 방법: {q3}")
-    print(f" - 자유 의견: {feedback}")
-    print(f" - 광고 수신 동의: {'예' if ad_agree else '아니오'}")
+    # 콘솔에 출력 (로깅)
+    print("===== 설문 응답 수신 =====")
+    print(f"이름: {name}")
+    print(f"이메일: {email}")
+    print(f"전화번호: {phone}")
+    print(f"Q1: {q1}")
+    print(f"Q2: {q2}")
+    print(f"Q3: {q3}")
+    print(f"추가 의견: {feedback}")
+    print(f"동의 항목: {agree}")
+    print(f"광고 수신 동의: {'예' if ad_agree == 'on' else '아니오'}")
+    print("=========================")
 
-    return render_template('thankyou.html', name=name, q1=q1, ad_agree=ad_agree)
+    return render_template('thankyou.html', name=name)
 
 
 # === 4. 로그아웃 처리 ===

@@ -2,8 +2,7 @@ services:
   - type: web
     name: flask-survey
     env: python
-    buildCommand: ""
-    startCommand: gunicorn app:app
-    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
     region: oregon
     plan: free
